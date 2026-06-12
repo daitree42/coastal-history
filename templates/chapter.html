@@ -14,19 +14,11 @@
 
 <article class="chapter-page">
     <header class="chapter-header">
-        <p class="chapter-city-label">{{ city.emoji }} {{ city.name }} · 第{{ chapter.number }}章</p>
+        <p class="chapter-city-label">{{ city.emoji }} {{ city.name }}</p>
         <h1 class="chapter-title">{{ chapter.title }}</h1>
         {% if chapter.frontmatter.theme %}
         <p class="chapter-theme">{{ chapter.frontmatter.theme }}</p>
         {% endif %}
-        <div class="chapter-submeta">
-            {% if chapter.main_character %}
-            <span class="chapter-characters">人物：{{ chapter.main_character }}</span>
-            {% endif %}
-            {% if chapter.frontmatter.time_period %}
-            <span class="chapter-period">时间：{{ chapter.frontmatter.time_period }}</span>
-            {% endif %}
-        </div>
     </header>
 
     <div class="chapter-body prose">

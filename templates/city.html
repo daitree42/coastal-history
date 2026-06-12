@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ city.title }} · {{ site_title }}{% endblock %}
-{% block description %}{{ city.theme }} · {{ city.main_character }}{% endblock %}
+{% block description %}{{ city.theme }}{% endblock %}
 
 {% block content %}
 <nav class="breadcrumb">
@@ -16,22 +16,12 @@
         <h1 class="city-title">{{ city.title }}</h1>
         <p class="city-theme">{{ city.theme }}</p>
         <div class="city-meta">
-            {% if city.main_character %}
-            <div class="city-meta-item">
-                <span class="meta-label">主线人物</span>
-                <span class="meta-value">{{ city.main_character }}</span>
-            </div>
-            {% endif %}
             {% if city.time_period %}
             <div class="city-meta-item">
                 <span class="meta-label">时间跨度</span>
                 <span class="meta-value">{{ city.time_period }}</span>
             </div>
             {% endif %}
-            <div class="city-meta-item">
-                <span class="meta-label">章节</span>
-                <span class="meta-value">{{ city.total_chapters }}章</span>
-            </div>
         </div>
     </header>
 
