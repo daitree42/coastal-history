@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}{{ chapter.title }} · {{ city.name }} · {{ site_title }}{% endblock %}
+{% block description %}{{ chapter.title }}{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">海岸线</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="/cities/{{ city.slug }}/">{{ city.name }}</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{{ chapter.title }}</span>
+</nav>
+
+<article class="chapter-page">
+    <header class="chapter-header">
+        <p class="chapter-city-label">{{ city.emoji }} {{ city.name }} · 第{{ chapter.number }}章</p>
+        <h1 class="chapter-title">{{ chapter.title }}</h1>
+        {% if chapter.frontmatter.theme %}
+        <p class="chapter-theme">{{ chapter.frontmatter.theme }}</p>
+        {% endif %}
+        <div class="chapter-submeta">
+            {% if chapter.main_character %}
+            <span class="chapter-characters">人物：{{ chapter.main_character }}</span>
+            {% endif %}
+            {% if chapter.frontmatter.time_period %}
+            <span class="chapter-period">时间：{{ chapter.frontmatter.time_period }}</span>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="chapter-body prose">
+        {% if chapter.status == 'outline' and chapter.body_html|trim|length == 0 %}
+        <!-- 大纲状态，显示空模板占位 -->
+        <div class="outline-placeholder">
+            <div class="placeholder-section">
+                <h3>【故事层】</h3>
+                <p class="placeholder-hint">叙事性开场，人物驱动，读起来像在读小说。</p>
+                <div class="placeholder-empty"></div>
+            </div>
+            <div class="placeholder-section">
+                <h3>【年表层】</h3>
+                <p class="placeholder-hint">关键事件时间线，简洁清晰。</p>
+                <div class="placeholder-empty"></div>
+            </div>
+            <div class="placeholder-section">
+                <h3>【深挖层】</h3>
+                <p class="placeholder-hint">历史学家观点、史学争议、一手史料引用。</p>
+                <div class="placeholder-empty"></div>
+            </div>
+            <div class="placeholder-section">
+                <h3>【思考层】</h3>
+                <p class="placeholder-hint">开放性问题，没有标准答案，引发讨论。</p>
+                <div class="placeholder-empty"></div>
+            </div>
+            <div class="placeholder-section">
+                <h3>【旅行层】</h3>
+                <p class="placeholder-hint">城市路线与观察点，可以按图索骥。</p>
+                <div class="placeholder-empty"></div>
+            </div>
+            <div class="placeholder-section">
+                <h3>【推荐读物】</h3>
+                <p class="placeholder-hint">分层书单，附简短说明。</p>
+                <div class="placeholder-empty"></div>
+            </div>
+        </div>
+        {% else %}
+        {{ chapter.body_html }}
+        {% endif %}
+    </div>
+
+    {% if chapter.status == 'outline' and chapter.body_html|trim|length == 0 %}
+    <div class="outline-notice">
+        <p>📝 本章正在撰写中。大纲已就绪，正文将逐步填充。</p>
+    </div>
+    {% endif %}
+</article>
+
+<!-- 上下章导航 -->
+<div class="chapter-nav">
+    {% if prev_chapter %}
+    <a href="/cities/{{ city.slug }}/{{ prev_chapter.slug }}/" class="chapter-nav-link prev">
+        <span class="nav-direction">← 上一章</span>
+        <span class="nav-title">{{ prev_chapter.title }}</span>
+    </a>
+    {% else %}
+    <div></div>
+    {% endif %}
+    {% if next_chapter %}
+    <a href="/cities/{{ city.slug }}/{{ next_chapter.slug }}/" class="chapter-nav-link next">
+        <span class="nav-direction">下一章 →</span>
+        <span class="nav-title">{{ next_chapter.title }}</span>
+    </a>
+    {% endif %}
+</div>
+
+<!-- 返回城市 -->
+<div class="back-to-city">
+    <a href="/cities/{{ city.slug }}/" class="back-link">← 返回 {{ city.name }}目录</a>
+</div>
+{% endblock %}

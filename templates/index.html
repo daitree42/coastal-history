@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ site_title }}{% endblock %}
+
+{% block content %}
+<section class="intro-section">
+    <h1 class="intro-title">沿海岸线的中国历史</h1>
+    <p class="intro-description">
+        从广州出发，一路向北，经汕头、福州、温州、台州、杭州、上海、连云港、青岛、天津、秦皇岛，终至大连。<br>
+        十二座城市，十二个历史关口——中国与海洋、与世界打交道的方式，从南到北有什么不同？
+    </p>
+</section>
+
+<section class="map-section">
+    <svg class="coastline-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <!-- 背景海 -->
+        <rect x="0" y="0" width="800" height="600" fill="var(--map-sea)" rx="16"/>
+
+        <!-- 海岸线（抽象弧线） -->
+        <path d="M 180,530
+                 C 200,500 220,480 240,460
+                 C 280,420 300,400 320,380
+                 C 350,350 370,330 390,310
+                 C 420,280 440,260 460,240
+                 C 490,210 510,190 530,170
+                 C 560,140 580,120 600,100
+                 C 620,85  640,75  660,70"
+              fill="none" stroke="var(--map-coast)" stroke-width="3" stroke-linecap="round"
+              class="coast-path"/>
+
+        <!-- 方向箭头 -->
+        <polygon points="200,518 190,530 210,530" fill="var(--map-coast)" opacity="0.4"/>
+        <text x="140" y="560" fill="var(--map-text)" font-size="12" opacity="0.5">南</text>
+        <text x="700" y="50" fill="var(--map-text)" font-size="12" opacity="0.5">北</text>
+
+        <!-- 城市标记 -->
+        {% for city in cities %}
+        {% set x = [180, 220, 260, 300, 330, 360, 400, 450, 490, 540, 590, 640][loop.index0] %}
+        {% set y = [520, 490, 460, 420, 390, 360, 330, 290, 250, 200, 150, 110][loop.index0] %}
+        <g class="city-marker" data-city="{{ city.slug }}">
+            <circle cx="{{ x }}" cy="{{ y }}" r="{% if city.chapters %}8{% else %}8{% endif %}"
+                    fill="var(--map-dot)" stroke="var(--map-dot-stroke)" stroke-width="2"
+                    class="city-dot"/>
+            <text x="{{ x }}" y="{{ y - 16 }}" text-anchor="middle"
+                  fill="var(--map-text)" font-size="14" font-weight="500"
+                  class="city-label">{{ city.name }}</text>
+            <!-- 点击跳转 -->
+            <a href="/cities/{{ city.slug }}/">
+                <rect x="{{ x - 50 }}" y="{{ y - 40 }}" width="100" height="60"
+                      fill="transparent" class="city-hitarea"/>
+            </a>
+        </g>
+        {% endfor %}
+
+        <!-- 装饰：经纬线 -->
+        <line x1="100" y1="100" x2="100" y2="500" stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="700" y1="100" x2="700" y2="500" stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="4 4"/>
+        <line x1="200" y1="300" x2="600" y2="300" stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="4 4"/>
+    </svg>
+</section>
+
+<section class="city-list-section">
+    <h2 class="section-title">十二站</h2>
+    <div class="city-grid">
+        {% for city in cities %}
+        <a href="/cities/{{ city.slug }}/" class="city-card">
+            <span class="city-card-emoji">{{ city.emoji }}</span>
+            <span class="city-card-order">第{{ city.order }}站</span>
+            <span class="city-card-name">{{ city.name }}</span>
+            <span class="city-card-theme">{{ city.theme }}</span>
+            <span class="city-card-chapters">{{ city.total_chapters }}章</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

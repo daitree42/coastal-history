@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}{{ city.title }} · {{ site_title }}{% endblock %}
+{% block description %}{{ city.theme }} · {{ city.main_character }}{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">海岸线</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{{ city.name }}</span>
+</nav>
+
+<article class="city-page">
+    <header class="city-header">
+        <div class="city-emoji-large">{{ city.emoji }}</div>
+        <h1 class="city-title">{{ city.title }}</h1>
+        <p class="city-theme">{{ city.theme }}</p>
+        <div class="city-meta">
+            {% if city.main_character %}
+            <div class="city-meta-item">
+                <span class="meta-label">主线人物</span>
+                <span class="meta-value">{{ city.main_character }}</span>
+            </div>
+            {% endif %}
+            {% if city.time_period %}
+            <div class="city-meta-item">
+                <span class="meta-label">时间跨度</span>
+                <span class="meta-value">{{ city.time_period }}</span>
+            </div>
+            {% endif %}
+            <div class="city-meta-item">
+                <span class="meta-label">章节</span>
+                <span class="meta-value">{{ city.total_chapters }}章</span>
+            </div>
+        </div>
+    </header>
+
+    {% if city.body_html %}
+    <div class="city-body prose">
+        {{ city.body_html }}
+    </div>
+    {% endif %}
+
+    <section class="chapter-list">
+        <h2 class="section-title">目录</h2>
+        <ol class="chapter-items">
+            {% for ch in city.chapters %}
+            <li class="chapter-item">
+                <a href="/cities/{{ city.slug }}/{{ ch.slug }}/" class="chapter-link">
+                    <span class="chapter-number">{{ ch.number }}.</span>
+                    <span class="chapter-title">{{ ch.title }}</span>
+                    {% if ch.status == 'outline' %}
+                    <span class="chapter-status-badge outline">大纲</span>
+                    {% elif ch.status == 'draft' %}
+                    <span class="chapter-status-badge draft">草稿</span>
+                    {% elif ch.status == 'published' %}
+                    <span class="chapter-status-badge published">完稿</span>
+                    {% endif %}
+                </a>
+            </li>
+            {% endfor %}
+        </ol>
+    </section>
+</article>
+
+<div class="city-nav">
+    {% if city.order > 1 %}
+    {% set prev_city = cities[city.order - 2] %}
+    <a href="/cities/{{ prev_city.slug }}/" class="city-nav-link prev">
+        <span class="nav-direction">上一站</span>
+        <span class="nav-city">{{ prev_city.emoji }} {{ prev_city.name }}</span>
+    </a>
+    {% endif %}
+    {% if city.order < cities|length %}
+    {% set next_city = cities[city.order] %}
+    <a href="/cities/{{ next_city.slug }}/" class="city-nav-link next">
+        <span class="nav-direction">下一站</span>
+        <span class="nav-city">{{ next_city.emoji }} {{ next_city.name }}</span>
+    </a>
+    {% endif %}
+</div>
+{% endblock %}

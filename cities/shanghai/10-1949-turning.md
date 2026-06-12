@@ -1,0 +1,24 @@
+---
+title: 「1949年的上海」
+city: 「上海」
+city_slug: 「shanghai」
+chapter: 10
+total_chapters: 14
+theme: 「一座城市可以同时属于全世界和中国吗？」
+main_character: 「虞洽卿」
+time_period: 「1949—1950年代初」
+status: outline
+created: 2026-06-13
+---
+
+【故事层】空白待写
+
+【年表层】空白待写
+
+【深挖层】空白待写
+
+【思考层】空白待写
+
+【旅行层】空白待写
+
+【推荐读物】空白待写
