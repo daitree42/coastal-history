@@ -5,9 +5,9 @@
 
 {% block content %}
 <nav class="breadcrumb">
-    <a href="/">海岸线</a>
+    <a href="{{ prefix }}/">海岸线</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="/cities/{{ city.slug }}/">{{ city.name }}</a>
+    <a href="{{ prefix }}/cities/{{ city.slug }}/">{{ city.name }}</a>
     <span class="breadcrumb-sep">›</span>
     <span>{{ chapter.title }}</span>
 </nav>
@@ -31,7 +31,6 @@
 
     <div class="chapter-body prose">
         {% if chapter.status == 'outline' and chapter.body_html|trim|length == 0 %}
-        <!-- 大纲状态，显示空模板占位 -->
         <div class="outline-placeholder">
             <div class="placeholder-section">
                 <h3>【故事层】</h3>
@@ -76,10 +75,9 @@
     {% endif %}
 </article>
 
-<!-- 上下章导航 -->
 <div class="chapter-nav">
     {% if prev_chapter %}
-    <a href="/cities/{{ city.slug }}/{{ prev_chapter.slug }}/" class="chapter-nav-link prev">
+    <a href="{{ prefix }}/cities/{{ city.slug }}/{{ prev_chapter.slug }}/" class="chapter-nav-link prev">
         <span class="nav-direction">← 上一章</span>
         <span class="nav-title">{{ prev_chapter.title }}</span>
     </a>
@@ -87,15 +85,14 @@
     <div></div>
     {% endif %}
     {% if next_chapter %}
-    <a href="/cities/{{ city.slug }}/{{ next_chapter.slug }}/" class="chapter-nav-link next">
+    <a href="{{ prefix }}/cities/{{ city.slug }}/{{ next_chapter.slug }}/" class="chapter-nav-link next">
         <span class="nav-direction">下一章 →</span>
         <span class="nav-title">{{ next_chapter.title }}</span>
     </a>
     {% endif %}
 </div>
 
-<!-- 返回城市 -->
 <div class="back-to-city">
-    <a href="/cities/{{ city.slug }}/" class="back-link">← 返回 {{ city.name }}目录</a>
+    <a href="{{ prefix }}/cities/{{ city.slug }}/" class="back-link">← 返回 {{ city.name }}目录</a>
 </div>
 {% endblock %}

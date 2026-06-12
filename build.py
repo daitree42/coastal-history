@@ -29,6 +29,9 @@ SITE_TITLE = config["title"]
 SITE_SUBTITLE = config["subtitle"]
 SITE_DESCRIPTION = config["description"]
 SITE_URL = config["base_url"]
+# 从 base_url 提取子路径前缀，如 "/coastal-history"
+from urllib.parse import urlparse
+SITE_PREFIX = urlparse(SITE_URL).path.rstrip("/") or ""
 CITY_ORDER = {c["slug"]: c["order"] for c in config["cities"]}
 CITY_NAMES = {c["slug"]: c["name"] for c in config["cities"]}
 
@@ -134,6 +137,7 @@ def build():
         "site_subtitle": SITE_SUBTITLE,
         "site_description": SITE_DESCRIPTION,
         "site_url": SITE_URL,
+        "prefix": SITE_PREFIX,
         "cities": cities,
         "year": datetime.now().year,
     }

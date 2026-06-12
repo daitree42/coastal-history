@@ -38,14 +38,13 @@
         {% set x = [180, 220, 260, 300, 330, 360, 400, 450, 490, 540, 590, 640][loop.index0] %}
         {% set y = [520, 490, 460, 420, 390, 360, 330, 290, 250, 200, 150, 110][loop.index0] %}
         <g class="city-marker" data-city="{{ city.slug }}">
-            <circle cx="{{ x }}" cy="{{ y }}" r="{% if city.chapters %}8{% else %}8{% endif %}"
+            <circle cx="{{ x }}" cy="{{ y }}" r="8"
                     fill="var(--map-dot)" stroke="var(--map-dot-stroke)" stroke-width="2"
                     class="city-dot"/>
             <text x="{{ x }}" y="{{ y - 16 }}" text-anchor="middle"
                   fill="var(--map-text)" font-size="14" font-weight="500"
                   class="city-label">{{ city.name }}</text>
-            <!-- 点击跳转 -->
-            <a href="/cities/{{ city.slug }}/">
+            <a href="{{ prefix }}/cities/{{ city.slug }}/">
                 <rect x="{{ x - 50 }}" y="{{ y - 40 }}" width="100" height="60"
                       fill="transparent" class="city-hitarea"/>
             </a>
@@ -63,7 +62,7 @@
     <h2 class="section-title">十二站</h2>
     <div class="city-grid">
         {% for city in cities %}
-        <a href="/cities/{{ city.slug }}/" class="city-card">
+        <a href="{{ prefix }}/cities/{{ city.slug }}/" class="city-card">
             <span class="city-card-emoji">{{ city.emoji }}</span>
             <span class="city-card-order">第{{ city.order }}站</span>
             <span class="city-card-name">{{ city.name }}</span>

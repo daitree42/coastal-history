@@ -5,7 +5,7 @@
 
 {% block content %}
 <nav class="breadcrumb">
-    <a href="/">海岸线</a>
+    <a href="{{ prefix }}/">海岸线</a>
     <span class="breadcrumb-sep">›</span>
     <span>{{ city.name }}</span>
 </nav>
@@ -46,7 +46,7 @@
         <ol class="chapter-items">
             {% for ch in city.chapters %}
             <li class="chapter-item">
-                <a href="/cities/{{ city.slug }}/{{ ch.slug }}/" class="chapter-link">
+                <a href="{{ prefix }}/cities/{{ city.slug }}/{{ ch.slug }}/" class="chapter-link">
                     <span class="chapter-number">{{ ch.number }}.</span>
                     <span class="chapter-title">{{ ch.title }}</span>
                     {% if ch.status == 'outline' %}
@@ -66,14 +66,14 @@
 <div class="city-nav">
     {% if city.order > 1 %}
     {% set prev_city = cities[city.order - 2] %}
-    <a href="/cities/{{ prev_city.slug }}/" class="city-nav-link prev">
+    <a href="{{ prefix }}/cities/{{ prev_city.slug }}/" class="city-nav-link prev">
         <span class="nav-direction">上一站</span>
         <span class="nav-city">{{ prev_city.emoji }} {{ prev_city.name }}</span>
     </a>
     {% endif %}
     {% if city.order < cities|length %}
     {% set next_city = cities[city.order] %}
-    <a href="/cities/{{ next_city.slug }}/" class="city-nav-link next">
+    <a href="{{ prefix }}/cities/{{ next_city.slug }}/" class="city-nav-link next">
         <span class="nav-direction">下一站</span>
         <span class="nav-city">{{ next_city.emoji }} {{ next_city.name }}</span>
     </a>
