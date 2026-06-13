@@ -1,5 +1,5 @@
 ---
-title: 「第七站：上海」
+title: 「上海」
 city_slug: 「shanghai」
 order: 7
 theme: 「一座城市可以同时属于全世界和中国吗？」

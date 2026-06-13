@@ -1,5 +1,5 @@
 ---
-title: 「第五站：台州」
+title: 「台州」
 city_slug: 「taizhou」
 order: 5
 theme: 「海洋对中国来说，究竟是机会还是威胁？」

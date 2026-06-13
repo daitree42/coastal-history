@@ -1,5 +1,5 @@
 ---
-title: 「第十二站：大连」
+title: 「大连」
 city_slug: 「dalian」
 order: 12
 theme: 「一座城市可以被三个帝国先后占领，然后变成什么？」

@@ -1,5 +1,5 @@
 ---
-title: 「第八站：连云港」
+title: 「连云港」
 city_slug: 「lianyungang」
 order: 8
 theme: 「一条铁路如何改变一个地区的命运？」

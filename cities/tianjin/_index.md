@@ -1,5 +1,5 @@
 ---
-title: 「第十站：天津」
+title: 「天津」
 city_slug: 「tianjin」
 order: 10
 theme: 「当首都的门户被打开，帝国的心脏会怎样？」

@@ -1,5 +1,5 @@
 ---
-title: 「第四站：温州」
+title: 「温州」
 city_slug: 「wenzhou」
 order: 4
 theme: 「当国家力量很弱的时候，民间如何自己运转？」

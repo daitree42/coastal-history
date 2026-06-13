@@ -1,5 +1,5 @@
 ---
-title: 「第十一站：秦皇岛」
+title: 「秦皇岛」
 city_slug: 「qinhuangdao」
 order: 11
 theme: 「长城的终点意味着什么？」

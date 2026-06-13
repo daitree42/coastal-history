@@ -1,5 +1,5 @@
 ---
-title: 「第九站：青岛」
+title: 「青岛」
 city_slug: 「qingdao」
 order: 9
 theme: 「一座城市可以被'设计'出来吗？谁来设计，为了谁？」

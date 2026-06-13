@@ -1,5 +1,5 @@
 ---
-title: 「第一站：广州」
+title: 「广州」
 city_slug: 「guangzhou」
 order: 1
 theme: 「中国第一次被迫打开大门，发生了什么？」

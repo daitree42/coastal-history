@@ -1,5 +1,5 @@
 ---
-title: 「第二站：汕头」
+title: 「汕头」
 city_slug: 「shantou」
 order: 2
 theme: 「为什么这么多中国人要离开？他们去了哪里？」

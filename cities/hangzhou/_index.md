@@ -1,5 +1,5 @@
 ---
-title: 「第六站：杭州」
+title: 「杭州」
 city_slug: 「hangzhou」
 order: 6
 theme: 「一个王朝失去北方之后，能重建什么？」

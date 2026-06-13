@@ -1,5 +1,5 @@
 ---
-title: 「第三站：福州」
+title: 「福州」
 city_slug: 「fuzhou」
 order: 3
 theme: 「中国曾经想过向海洋要力量吗？」

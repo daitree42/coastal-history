@@ -1,6 +1,6 @@
 # 沿海岸线的中国历史 · 站点配置
 title: "沿海岸线的中国历史"
-subtitle: "从广州到大连，12座城市，一条海岸线"
+subtitle: "从广州到大连，沿着海岸线，读懂中国的近代化之路"
 description: "一套以中国沿海城市为路线的历史课程，面向15岁以上的青少年读者"
 author: "daitree"
 repo: "https://github.com/daitree42/coastal-history"
@@ -18,33 +18,42 @@ cities:
   - slug: shantou
     name: 汕头
     order: 2
+  - slug: xiamen
+    name: 厦门
+    order: 3
   - slug: fuzhou
     name: 福州
-    order: 3
+    order: 4
   - slug: wenzhou
     name: 温州
-    order: 4
+    order: 5
   - slug: taizhou
     name: 台州
-    order: 5
+    order: 6
+  - slug: ningbo
+    name: 宁波
+    order: 7
   - slug: hangzhou
     name: 杭州
-    order: 6
+    order: 8
   - slug: shanghai
     name: 上海
-    order: 7
+    order: 9
   - slug: lianyungang
     name: 连云港
-    order: 8
+    order: 10
   - slug: qingdao
     name: 青岛
-    order: 9
+    order: 11
   - slug: tianjin
     name: 天津
-    order: 10
+    order: 12
+  - slug: beijing
+    name: 北京
+    order: 13
   - slug: qinhuangdao
     name: 秦皇岛
-    order: 11
+    order: 14
   - slug: dalian
     name: 大连
-    order: 12
+    order: 15
