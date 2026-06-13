@@ -8,7 +8,7 @@ time_period: 「1850年代—当代」
 emoji: 「🚢」
 latitude: 23.3541
 longitude: 116.6822
-status: outline
+status: draft
 ---
 
 ## 核心问题

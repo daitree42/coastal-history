@@ -8,7 +8,7 @@ time_period: 「1840年代—1910年代」
 emoji: 「⚓」
 latitude: 26.0745
 longitude: 119.2965
-status: outline
+status: draft
 ---
 
 ## 核心问题
