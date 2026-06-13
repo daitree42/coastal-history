@@ -12,49 +12,173 @@
 </section>
 
 <section class="map-section">
-    <svg class="coastline-map" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <svg class="coastline-map" viewBox="0 0 800 620" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- 陆地纹理 -->
+            <pattern id="land-texture" patternUnits="userSpaceOnUse" width="80" height="80" opacity="0.15">
+                <circle cx="10" cy="15" r="1" fill="currentColor"/>
+                <circle cx="35" cy="30" r="0.8" fill="currentColor"/>
+                <circle cx="55" cy="12" r="1.2" fill="currentColor"/>
+                <circle cx="70" cy="45" r="0.6" fill="currentColor"/>
+                <circle cx="25" cy="55" r="0.9" fill="currentColor"/>
+                <circle cx="45" cy="65" r="1.1" fill="currentColor"/>
+                <circle cx="65" cy="72" r="0.7" fill="currentColor"/>
+            </pattern>
+        </defs>
+
         <!-- 背景海 -->
-        <rect x="0" y="0" width="800" height="600" fill="var(--map-sea)" rx="16"/>
+        <rect x="0" y="0" width="800" height="620" fill="var(--map-sea)" rx="16"/>
+        <!-- 深海区渐变色 -->
+        <rect x="0" y="0" width="800" height="620" fill="url(#sea-gradient)" opacity="0.3" rx="16"/>
 
-        <!-- 海岸线（抽象弧线） -->
-        <path d="M 180,530
-                 C 200,500 220,480 240,460
-                 C 280,420 300,400 320,380
-                 C 350,350 370,330 390,310
-                 C 420,280 440,260 460,240
-                 C 490,210 510,190 530,170
-                 C 560,140 580,120 600,100
-                 C 620,85  640,75  660,70"
-              fill="none" stroke="var(--map-coast)" stroke-width="3" stroke-linecap="round"
-              class="coast-path"/>
+        <!-- 海浪纹理 -->
+        <g stroke="var(--map-sea-deep)" stroke-width="0.6" fill="none" opacity="0.25">
+            <path d="M 550,50 Q 570,45 590,50 Q 610,55 630,50"/>
+            <path d="M 600,120 Q 620,115 640,120 Q 660,125 680,120"/>
+            <path d="M 650,200 Q 670,195 690,200 Q 710,205 730,200"/>
+            <path d="M 680,300 Q 700,295 720,300 Q 740,305 760,300"/>
+            <path d="M 500,450 Q 520,445 540,450 Q 560,455 580,450"/>
+            <path d="M 620,500 Q 640,495 660,500 Q 680,505 700,500"/>
+            <path d="M 550,580 Q 570,575 590,580 Q 610,585 630,580"/>
+            <path d="M 650,550 Q 670,545 690,550 Q 710,555 730,550"/>
+            <path d="M 700,380 Q 720,375 740,380 Q 760,385 780,380"/>
+            <path d="M 450,100 Q 465,95 480,100 Q 495,105 510,100"/>
+            <path d="M 500,70 Q 515,65 530,70 Q 545,75 560,70"/>
+            <path d="M 580,450 Q 595,445 610,450 Q 625,455 640,450"/>
+        </g>
 
-        <!-- 方向箭头 -->
-        <polygon points="200,518 190,530 210,530" fill="var(--map-coast)" opacity="0.4"/>
-        <text x="140" y="560" fill="var(--map-text)" font-size="12" opacity="0.5">南</text>
-        <text x="700" y="50" fill="var(--map-text)" font-size="12" opacity="0.5">北</text>
+        <!-- 深海渐变定义 -->
+        <defs>
+            <linearGradient id="sea-gradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="var(--map-sea-deep)" stop-opacity="0"/>
+                <stop offset="100%" stop-color="var(--map-sea-deep)" stop-opacity="0.5"/>
+            </linearGradient>
+        </defs>
+
+        <!-- 经纬线网格 -->
+        <g stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="3 5">
+            <line x1="80" y1="140" x2="700" y2="140"/>
+            <line x1="80" y1="250" x2="700" y2="250"/>
+            <line x1="80" y1="360" x2="700" y2="360"/>
+            <line x1="80" y1="470" x2="700" y2="470"/>
+            <line x1="240" y1="30" x2="240" y2="600"/>
+            <line x1="440" y1="30" x2="440" y2="600"/>
+            <line x1="640" y1="30" x2="640" y2="600"/>
+        </g>
+
+        <!-- 纬度标注 -->
+        <g fill="var(--map-grid)" font-size="10" opacity="0.6">
+            <text x="75" y="144">40°N</text>
+            <text x="75" y="254">35°N</text>
+            <text x="75" y="364">30°N</text>
+            <text x="75" y="474">25°N</text>
+        </g>
+        <!-- 经度标注 -->
+        <g fill="var(--map-grid)" font-size="10" opacity="0.6">
+            <text x="232" y="615">110°E</text>
+            <text x="432" y="615">115°E</text>
+            <text x="632" y="615">120°E</text>
+        </g>
+
+        <!-- 陆地 -->
+        <path d="M 220,575
+                 C 250,560 275,550 300,540
+                 C 325,527 345,515 360,505
+                 C 375,490 388,478 400,465
+                 C 415,448 428,435 435,425
+                 C 445,410 453,402 460,395
+                 C 470,380 480,368 485,360
+                 C 475,352 455,347 440,345
+                 C 460,336 490,324 510,315
+                 C 495,288 480,268 465,250
+                 C 500,238 540,225 565,215
+                 C 535,198 485,178 410,150
+                 C 440,142 460,136 480,130
+                 C 520,118 550,108 570,100
+                 L 570,0 L 0,0 L 0,620 Z"
+              fill="var(--map-land)" stroke="var(--map-land-border)" stroke-width="0.5"/>
+
+        <!-- 陆地纹理 -->
+        <path d="M 220,575
+                 C 250,560 275,550 300,540
+                 C 325,527 345,515 360,505
+                 C 375,490 388,478 400,465
+                 C 415,448 428,435 435,425
+                 C 445,410 453,402 460,395
+                 C 470,380 480,368 485,360
+                 C 475,352 455,347 440,345
+                 C 460,336 490,324 510,315
+                 C 495,288 480,268 465,250
+                 C 500,238 540,225 565,215
+                 C 535,198 485,178 410,150
+                 C 440,142 460,136 480,130
+                 C 520,118 550,108 570,100
+                 L 570,0 L 0,0 L 0,620 Z"
+              fill="url(#land-texture)" color="var(--map-text)" opacity="0.08"/>
+
+        <!-- 海岸线轮廓 -->
+        <path d="M 220,575
+                 C 250,560 275,550 300,540
+                 C 325,527 345,515 360,505
+                 C 375,490 388,478 400,465
+                 C 415,448 428,435 435,425
+                 C 445,410 453,402 460,395
+                 C 470,380 480,368 485,360
+                 C 475,352 455,347 440,345
+                 C 460,336 490,324 510,315
+                 C 495,288 480,268 465,250
+                 C 500,238 540,225 565,215
+                 C 535,198 485,178 410,150
+                 C 440,142 460,136 480,130
+                 C 520,118 550,108 570,100"
+              fill="none" stroke="var(--map-coast)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+        <!-- 河流：珠江 -->
+        <path d="M 60,545 Q 110,540 160,555 Q 190,565 220,575"
+              fill="none" stroke="var(--map-river)" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="130" y="545" fill="var(--map-river)" font-size="10">珠江</text>
+
+        <!-- 河流：长江 -->
+        <path d="M 60,320 Q 140,325 240,320 Q 350,315 440,320 Q 478,318 510,315"
+              fill="none" stroke="var(--map-river)" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 2"/>
+        <text x="280" y="310" fill="var(--map-river)" font-size="10">长江</text>
+
+        <!-- 河流：黄河 -->
+        <path d="M 60,195 Q 120,190 200,185 Q 280,175 360,165 Q 390,158 410,150"
+              fill="none" stroke="var(--map-river-yellow)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
+        <text x="200" y="178" fill="var(--map-river-yellow)" font-size="10">黄河</text>
+
+        <!-- 罗盘 -->
+        <g transform="translate(710, 55)">
+            <circle cx="0" cy="0" r="26" fill="none" stroke="var(--map-grid)" stroke-width="0.5" opacity="0.5"/>
+            <polygon points="0,-28 5,-8 -5,-8" fill="var(--map-coast)" opacity="0.7"/>
+            <polygon points="0,28 5,8 -5,8" fill="var(--map-grid)" opacity="0.3"/>
+            <polygon points="28,0 8,5 8,-5" fill="var(--map-grid)" opacity="0.3"/>
+            <polygon points="-28,0 -8,5 -8,-5" fill="var(--map-grid)" opacity="0.3"/>
+            <text x="0" y="-33" text-anchor="middle" fill="var(--map-coast)" font-size="11" font-weight="600" opacity="0.7">北</text>
+        </g>
 
         <!-- 城市标记 -->
         {% for city in cities %}
-        {% set x = [170, 202, 234, 264, 292, 318, 344, 370, 402, 436, 470, 502, 534, 568, 610][loop.index0] %}
-        {% set y = [520, 492, 463, 434, 404, 375, 346, 317, 286, 254, 222, 190, 158, 128, 98][loop.index0] %}
+        {% set x = [220, 300, 360, 400, 435, 460, 485, 440, 510, 465, 565, 410, 350, 480, 570][loop.index0] %}
+        {% set y = [575, 540, 505, 465, 425, 395, 360, 345, 315, 250, 215, 150, 125, 130, 100][loop.index0] %}
         <g class="city-marker" data-city="{{ city.slug }}">
-            <circle cx="{{ x }}" cy="{{ y }}" r="8"
+            <!-- 光晕 -->
+            <circle cx="{{ x }}" cy="{{ y }}" r="14"
+                    fill="var(--map-dot-glow)" class="city-glow"/>
+            <circle cx="{{ x }}" cy="{{ y }}" r="7"
                     fill="var(--map-dot)" stroke="var(--map-dot-stroke)" stroke-width="2"
                     class="city-dot"/>
-            <text x="{{ x }}" y="{{ y - 16 }}" text-anchor="middle"
-                  fill="var(--map-text)" font-size="14" font-weight="500"
+            <text x="{{ x }}" y="{{ y - 18 }}" text-anchor="middle"
+                  fill="var(--map-text)" font-size="13" font-weight="500"
                   class="city-label">{{ city.name }}</text>
             <a href="{{ prefix }}/cities/{{ city.slug }}/">
-                <rect x="{{ x - 50 }}" y="{{ y - 40 }}" width="100" height="60"
+                <rect x="{{ x - 50 }}" y="{{ y - 45 }}" width="100" height="70"
                       fill="transparent" class="city-hitarea"/>
             </a>
         </g>
         {% endfor %}
 
-        <!-- 装饰：经纬线 -->
-        <line x1="100" y1="100" x2="100" y2="500" stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="4 4"/>
-        <line x1="700" y1="100" x2="700" y2="500" stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="4 4"/>
-        <line x1="200" y1="300" x2="600" y2="300" stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="4 4"/>
     </svg>
 </section>
 

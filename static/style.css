@@ -19,12 +19,18 @@
     --color-code-bg: #edeae2;
 
     /* 地图 */
-    --map-sea: #e2e8e0;
-    --map-coast: #8aa0a8;
+    --map-sea: #dce4e6;
+    --map-sea-deep: #c8d4d8;
+    --map-land: #ede5d8;
+    --map-land-border: #d8cdba;
+    --map-coast: #7a969e;
     --map-dot: #1a4a5a;
-    --map-dot-stroke: rgba(255,255,255,0.6);
+    --map-dot-glow: rgba(26,74,90,0.15);
+    --map-dot-stroke: rgba(255,255,255,0.8);
     --map-text: #3a3a3a;
-    --map-grid: rgba(26,74,90,0.08);
+    --map-grid: rgba(26,74,90,0.07);
+    --map-river: rgba(100,130,140,0.35);
+    --map-river-yellow: rgba(170,150,100,0.4);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,11 +51,17 @@
         --color-blockquote-border: #4a4440;
         --color-code-bg: #2a2822;
         --map-sea: #1a2828;
+        --map-sea-deep: #142228;
+        --map-land: #262420;
+        --map-land-border: #3a3630;
         --map-coast: #507078;
         --map-dot: #7aabb8;
-        --map-dot-stroke: rgba(0,0,0,0.4);
+        --map-dot-glow: rgba(122,171,184,0.2);
+        --map-dot-stroke: rgba(0,0,0,0.5);
         --map-text: #b0b0a8;
-        --map-grid: rgba(122,171,184,0.1);
+        --map-grid: rgba(122,171,184,0.08);
+        --map-river: rgba(120,150,160,0.25);
+        --map-river-yellow: rgba(150,140,100,0.3);
     }
 }
 
@@ -70,11 +82,17 @@
     --color-blockquote-border: #4a4440;
     --color-code-bg: #2a2822;
     --map-sea: #1a2828;
+    --map-sea-deep: #142228;
+    --map-land: #262420;
+    --map-land-border: #3a3630;
     --map-coast: #507078;
     --map-dot: #7aabb8;
-    --map-dot-stroke: rgba(0,0,0,0.4);
+    --map-dot-glow: rgba(122,171,184,0.2);
+    --map-dot-stroke: rgba(0,0,0,0.5);
     --map-text: #b0b0a8;
-    --map-grid: rgba(122,171,184,0.1);
+    --map-grid: rgba(122,171,184,0.08);
+    --map-river: rgba(120,150,160,0.25);
+    --map-river-yellow: rgba(150,140,100,0.3);
 }
 
 /* ── 重置 ── */
@@ -212,9 +230,17 @@ img { max-width: 100%; height: auto; }
     cursor: pointer;
     transition: transform 0.2s;
 }
+.city-glow {
+    opacity: 0;
+    transition: opacity 0.3s, r 0.3s;
+}
+.city-marker:hover .city-glow {
+    opacity: 1;
+    r: 18;
+}
 .city-marker:hover .city-dot {
     fill: var(--color-accent-warm);
-    r: 10;
+    r: 9;
 }
 .city-marker:hover .city-label {
     font-weight: 700;
