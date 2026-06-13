@@ -8,7 +8,7 @@ time_period: 「明朝—当代」
 emoji: 「⚔️」
 latitude: 28.6562
 longitude: 121.4208
-status: outline
+status: draft
 ---
 
 ## 核心问题
