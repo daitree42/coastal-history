@@ -201,18 +201,13 @@ img { max-width: 100%; height: auto; }
 /* ── 首页 intro ── */
 .intro-section {
     text-align: center;
-    padding: 48px 0 32px;
-}
-.intro-title {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 16px;
+    padding: 40px 0 32px;
 }
 .intro-description {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--color-text-secondary);
-    line-height: 1.8;
-    max-width: 600px;
+    line-height: 1.7;
+    max-width: 500px;
     margin: 0 auto;
 }
 
@@ -572,8 +567,8 @@ img { max-width: 100%; height: auto; }
     .container { padding: 0 16px; }
     .site-header { padding: 24px 0 16px; }
     .logo-text { font-size: 18px; }
-    .intro-title { font-size: 24px; }
-    .intro-section { padding: 32px 0 24px; }
+    .intro-description { font-size: 16px; }
+    .intro-section { padding: 28px 0 24px; }
     .city-title { font-size: 24px; }
     .city-grid { grid-template-columns: 1fr; }
     .city-meta { flex-direction: column; gap: 8px; }
