@@ -12,173 +12,166 @@
 </section>
 
 <section class="map-section">
-    <svg class="coastline-map" viewBox="0 0 800 620" xmlns="http://www.w3.org/2000/svg">
+    <svg class="coastline-map" viewBox="0 0 800 640" xmlns="http://www.w3.org/2000/svg">
         <defs>
-            <!-- 陆地纹理 -->
-            <pattern id="land-texture" patternUnits="userSpaceOnUse" width="80" height="80" opacity="0.15">
-                <circle cx="10" cy="15" r="1" fill="currentColor"/>
-                <circle cx="35" cy="30" r="0.8" fill="currentColor"/>
-                <circle cx="55" cy="12" r="1.2" fill="currentColor"/>
-                <circle cx="70" cy="45" r="0.6" fill="currentColor"/>
-                <circle cx="25" cy="55" r="0.9" fill="currentColor"/>
-                <circle cx="45" cy="65" r="1.1" fill="currentColor"/>
-                <circle cx="65" cy="72" r="0.7" fill="currentColor"/>
-            </pattern>
-        </defs>
-
-        <!-- 背景海 -->
-        <rect x="0" y="0" width="800" height="620" fill="var(--map-sea)" rx="16"/>
-        <!-- 深海区渐变色 -->
-        <rect x="0" y="0" width="800" height="620" fill="url(#sea-gradient)" opacity="0.3" rx="16"/>
-
-        <!-- 海浪纹理 -->
-        <g stroke="var(--map-sea-deep)" stroke-width="0.6" fill="none" opacity="0.25">
-            <path d="M 550,50 Q 570,45 590,50 Q 610,55 630,50"/>
-            <path d="M 600,120 Q 620,115 640,120 Q 660,125 680,120"/>
-            <path d="M 650,200 Q 670,195 690,200 Q 710,205 730,200"/>
-            <path d="M 680,300 Q 700,295 720,300 Q 740,305 760,300"/>
-            <path d="M 500,450 Q 520,445 540,450 Q 560,455 580,450"/>
-            <path d="M 620,500 Q 640,495 660,500 Q 680,505 700,500"/>
-            <path d="M 550,580 Q 570,575 590,580 Q 610,585 630,580"/>
-            <path d="M 650,550 Q 670,545 690,550 Q 710,555 730,550"/>
-            <path d="M 700,380 Q 720,375 740,380 Q 760,385 780,380"/>
-            <path d="M 450,100 Q 465,95 480,100 Q 495,105 510,100"/>
-            <path d="M 500,70 Q 515,65 530,70 Q 545,75 560,70"/>
-            <path d="M 580,450 Q 595,445 610,450 Q 625,455 640,450"/>
-        </g>
-
-        <!-- 深海渐变定义 -->
-        <defs>
-            <linearGradient id="sea-gradient" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="sea-depth" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="var(--map-sea-deep)" stop-opacity="0"/>
-                <stop offset="100%" stop-color="var(--map-sea-deep)" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="var(--map-sea-deep)" stop-opacity="0.35"/>
             </linearGradient>
         </defs>
 
-        <!-- 经纬线网格 -->
-        <g stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="3 5">
-            <line x1="80" y1="140" x2="700" y2="140"/>
-            <line x1="80" y1="250" x2="700" y2="250"/>
-            <line x1="80" y1="360" x2="700" y2="360"/>
-            <line x1="80" y1="470" x2="700" y2="470"/>
-            <line x1="240" y1="30" x2="240" y2="600"/>
-            <line x1="440" y1="30" x2="440" y2="600"/>
-            <line x1="640" y1="30" x2="640" y2="600"/>
+        <!-- 海面 -->
+        <rect x="0" y="0" width="800" height="640" fill="var(--map-sea)" rx="16"/>
+        <rect x="0" y="0" width="800" height="640" fill="url(#sea-depth)" rx="16"/>
+
+        <!-- 经纬线 -->
+        <g stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="2 4">
+            <line x1="60" y1="497" x2="740" y2="497"/>  <!-- 25°N -->
+            <line x1="60" y1="341" x2="740" y2="341"/>  <!-- 30°N -->
+            <line x1="60" y1="186" x2="740" y2="186"/>  <!-- 35°N -->
+            <line x1="60" y1="30"  x2="740" y2="30"/>   <!-- 40°N -->
+        </g>
+        <g stroke="var(--map-grid)" stroke-width="0.5" stroke-dasharray="2 4">
+            <line x1="264" y1="10" x2="264" y2="630"/>  <!-- 115°E -->
+            <line x1="427" y1="10" x2="427" y2="630"/>  <!-- 118°E -->
+            <line x1="591" y1="10" x2="591" y2="630"/>  <!-- 121°E -->
         </g>
 
-        <!-- 纬度标注 -->
-        <g fill="var(--map-grid)" font-size="10" opacity="0.6">
-            <text x="75" y="144">40°N</text>
-            <text x="75" y="254">35°N</text>
-            <text x="75" y="364">30°N</text>
-            <text x="75" y="474">25°N</text>
-        </g>
-        <!-- 经度标注 -->
-        <g fill="var(--map-grid)" font-size="10" opacity="0.6">
-            <text x="232" y="615">110°E</text>
-            <text x="432" y="615">115°E</text>
-            <text x="632" y="615">120°E</text>
+        <!-- 经纬标注 -->
+        <g fill="var(--map-grid)" font-size="11" opacity="0.5">
+            <text x="55" y="501">25°N</text>
+            <text x="55" y="345">30°N</text>
+            <text x="55" y="190">35°N</text>
+            <text x="55" y="34">40°N</text>
+            <text x="256" y="640">115°E</text>
+            <text x="419" y="640">118°E</text>
+            <text x="583" y="640">121°E</text>
         </g>
 
         <!-- 陆地 -->
-        <path d="M 220,575
-                 C 250,560 275,550 300,540
-                 C 325,527 345,515 360,505
-                 C 375,490 388,478 400,465
-                 C 415,448 428,435 435,425
-                 C 445,410 453,402 460,395
-                 C 470,380 480,368 485,360
-                 C 475,352 455,347 440,345
-                 C 460,336 490,324 510,315
-                 C 495,288 480,268 465,250
-                 C 500,238 540,225 565,215
-                 C 535,198 485,178 410,150
-                 C 440,142 460,136 480,130
-                 C 520,118 550,108 570,100
-                 L 570,0 L 0,0 L 0,620 Z"
-              fill="var(--map-land)" stroke="var(--map-land-border)" stroke-width="0.5"/>
+        <path d="M 181.8,586.9
+                 C 204.1,572.1 229.7,566.1 236.2,565.1
+                 C 249.7,563.0 304.5,557.9 318.0,555.8
+                 C 324.5,554.8 349.8,548.0 356.2,546.5
+                 C 363.4,544.8 392.8,539.3 399.8,537.1
+                 C 402.8,536.2 413.6,529.7 416.1,527.8
+                 C 419.1,525.5 429.4,514.4 432.4,512.2
+                 C 438.5,507.7 464.6,492.0 470.6,487.4
+                 C 475.5,483.7 493.0,466.4 497.8,462.5
+                 C 503.9,457.5 529.8,439.4 536.0,434.5
+                 C 538.9,432.2 549.4,421.3 552.3,418.9
+                 C 555.8,416.1 570.4,405.8 574.2,403.4
+                 C 578.6,400.6 596.9,390.5 601.4,387.9
+                 C 603.2,386.9 611.1,383.2 612.3,381.6
+                 C 613.8,379.5 617.4,368.8 617.8,366.1
+                 C 618.3,362.6 619.7,346.7 617.8,344.3
+                 C 615.2,341.0 589.4,333.7 590.5,331.9
+                 C 592.1,329.1 630.9,319.5 634.1,316.3
+                 C 635.5,314.9 619.0,306.7 617.8,303.9
+                 C 616.3,300.5 619.8,282.0 617.8,279.0
+                 C 615.3,275.2 594.8,266.4 590.5,263.4
+                 C 583.8,258.6 559.1,236.9 552.3,232.3
+                 C 545.4,227.6 515.5,212.2 508.8,207.5
+                 C 507.3,206.5 502.6,199.5 503.3,198.1
+                 C 505.3,194.3 521.3,179.8 525.1,176.4
+                 C 529.4,172.5 547.7,158.1 552.3,154.6
+                 C 553.1,154.0 556.8,151.9 557.8,151.5
+                 C 570.5,146.7 621.4,128.3 634.1,123.5
+                 C 637.8,122.1 657.4,115.2 655.9,114.2
+                 C 652.8,112.1 615.0,106.3 606.8,104.8
+                 C 597.7,103.2 561.4,97.0 552.3,95.5
+                 C 543.2,94.0 506.9,87.7 497.8,86.2
+                 C 484.2,84.0 427.2,77.9 416.1,73.7
+                 C 413.6,72.7 413.7,56.1 416.1,55.1
+                 C 424.6,51.5 470.7,48.0 481.5,45.8
+                 C 486.2,44.9 504.3,38.1 508.8,36.4
+                 C 509.8,36.0 513.2,33.2 514.2,33.3
+                 C 522.3,34.2 555.1,40.7 563.2,42.6
+                 C 570.6,44.3 599.7,52.5 606.8,55.1
+                 L 623.2,64.4 L 623.2,0 L 0,0 L 0,640 Z"
+              fill="var(--map-land)"/>
 
-        <!-- 陆地纹理 -->
-        <path d="M 220,575
-                 C 250,560 275,550 300,540
-                 C 325,527 345,515 360,505
-                 C 375,490 388,478 400,465
-                 C 415,448 428,435 435,425
-                 C 445,410 453,402 460,395
-                 C 470,380 480,368 485,360
-                 C 475,352 455,347 440,345
-                 C 460,336 490,324 510,315
-                 C 495,288 480,268 465,250
-                 C 500,238 540,225 565,215
-                 C 535,198 485,178 410,150
-                 C 440,142 460,136 480,130
-                 C 520,118 550,108 570,100
-                 L 570,0 L 0,0 L 0,620 Z"
-              fill="url(#land-texture)" color="var(--map-text)" opacity="0.08"/>
+        <!-- 海岸线 -->
+        <path d="M 181.8,586.9
+                 C 204.1,572.1 229.7,566.1 236.2,565.1
+                 C 249.7,563.0 304.5,557.9 318.0,555.8
+                 C 324.5,554.8 349.8,548.0 356.2,546.5
+                 C 363.4,544.8 392.8,539.3 399.8,537.1
+                 C 402.8,536.2 413.6,529.7 416.1,527.8
+                 C 419.1,525.5 429.4,514.4 432.4,512.2
+                 C 438.5,507.7 464.6,492.0 470.6,487.4
+                 C 475.5,483.7 493.0,466.4 497.8,462.5
+                 C 503.9,457.5 529.8,439.4 536.0,434.5
+                 C 538.9,432.2 549.4,421.3 552.3,418.9
+                 C 555.8,416.1 570.4,405.8 574.2,403.4
+                 C 578.6,400.6 596.9,390.5 601.4,387.9
+                 C 603.2,386.9 611.1,383.2 612.3,381.6
+                 C 613.8,379.5 617.4,368.8 617.8,366.1
+                 C 618.3,362.6 619.7,346.7 617.8,344.3
+                 C 615.2,341.0 589.4,333.7 590.5,331.9
+                 C 592.1,329.1 630.9,319.5 634.1,316.3
+                 C 635.5,314.9 619.0,306.7 617.8,303.9
+                 C 616.3,300.5 619.8,282.0 617.8,279.0
+                 C 615.3,275.2 594.8,266.4 590.5,263.4
+                 C 583.8,258.6 559.1,236.9 552.3,232.3
+                 C 545.4,227.6 515.5,212.2 508.8,207.5
+                 C 507.3,206.5 502.6,199.5 503.3,198.1
+                 C 505.3,194.3 521.3,179.8 525.1,176.4
+                 C 529.4,172.5 547.7,158.1 552.3,154.6
+                 C 553.1,154.0 556.8,151.9 557.8,151.5
+                 C 570.5,146.7 621.4,128.3 634.1,123.5
+                 C 637.8,122.1 657.4,115.2 655.9,114.2
+                 C 652.8,112.1 615.0,106.3 606.8,104.8
+                 C 597.7,103.2 561.4,97.0 552.3,95.5
+                 C 543.2,94.0 506.9,87.7 497.8,86.2
+                 C 484.2,84.0 427.2,77.9 416.1,73.7
+                 C 413.6,72.7 413.7,56.1 416.1,55.1
+                 C 424.6,51.5 470.7,48.0 481.5,45.8
+                 C 486.2,44.9 504.3,38.1 508.8,36.4
+                 C 509.8,36.0 513.2,33.2 514.2,33.3
+                 C 522.3,34.2 555.1,40.7 563.2,42.6
+                 C 570.6,44.3 599.7,52.5 606.8,55.1
+                 L 623.2,64.4"
+              fill="none" stroke="var(--map-coast)" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
 
-        <!-- 海岸线轮廓 -->
-        <path d="M 220,575
-                 C 250,560 275,550 300,540
-                 C 325,527 345,515 360,505
-                 C 375,490 388,478 400,465
-                 C 415,448 428,435 435,425
-                 C 445,410 453,402 460,395
-                 C 470,380 480,368 485,360
-                 C 475,352 455,347 440,345
-                 C 460,336 490,324 510,315
-                 C 495,288 480,268 465,250
-                 C 500,238 540,225 565,215
-                 C 535,198 485,178 410,150
-                 C 440,142 460,136 480,130
-                 C 520,118 550,108 570,100"
-              fill="none" stroke="var(--map-coast)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-
-        <!-- 河流：珠江 -->
-        <path d="M 60,545 Q 110,540 160,555 Q 190,565 220,575"
-              fill="none" stroke="var(--map-river)" stroke-width="2.5" stroke-linecap="round"/>
-        <text x="130" y="545" fill="var(--map-river)" font-size="10">珠江</text>
-
-        <!-- 河流：长江 -->
-        <path d="M 60,320 Q 140,325 240,320 Q 350,315 440,320 Q 478,318 510,315"
-              fill="none" stroke="var(--map-river)" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 2"/>
-        <text x="280" y="310" fill="var(--map-river)" font-size="10">长江</text>
-
-        <!-- 河流：黄河 -->
-        <path d="M 60,195 Q 120,190 200,185 Q 280,175 360,165 Q 390,158 410,150"
-              fill="none" stroke="var(--map-river-yellow)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3"/>
-        <text x="200" y="178" fill="var(--map-river-yellow)" font-size="10">黄河</text>
-
-        <!-- 罗盘 -->
-        <g transform="translate(710, 55)">
-            <circle cx="0" cy="0" r="26" fill="none" stroke="var(--map-grid)" stroke-width="0.5" opacity="0.5"/>
-            <polygon points="0,-28 5,-8 -5,-8" fill="var(--map-coast)" opacity="0.7"/>
-            <polygon points="0,28 5,8 -5,8" fill="var(--map-grid)" opacity="0.3"/>
-            <polygon points="28,0 8,5 8,-5" fill="var(--map-grid)" opacity="0.3"/>
-            <polygon points="-28,0 -8,5 -8,-5" fill="var(--map-grid)" opacity="0.3"/>
-            <text x="0" y="-33" text-anchor="middle" fill="var(--map-coast)" font-size="11" font-weight="600" opacity="0.7">北</text>
+        <!-- 河流 -->
+        <g fill="none" stroke-linecap="round" opacity="0.45">
+            <path d="M 50,545 Q 90,540 130,548 Q 158,555 181,560" stroke="var(--map-river)" stroke-width="2"/>
+            <text x="95" y="538" fill="var(--map-river)" font-size="10" stroke="none">珠江</text>
+            <path d="M 50,320 Q 140,325 240,320 Q 340,315 430,322 Q 470,328 530,316" stroke="var(--map-river)" stroke-width="2.5" stroke-dasharray="3 3"/>
+            <text x="280" y="308" fill="var(--map-river)" font-size="10" stroke="none">长江</text>
+            <path d="M 50,195 Q 120,190 200,185 Q 280,175 340,168 Q 370,160 396,155" stroke="var(--map-river-yellow)" stroke-width="2" stroke-dasharray="2 3"/>
+            <text x="180" y="178" fill="var(--map-river-yellow)" font-size="10" stroke="none">黄河</text>
         </g>
 
-        <!-- 城市标记 -->
+        <!-- 罗盘 -->
+        <g transform="translate(720, 50)" opacity="0.55">
+            <circle cx="0" cy="0" r="22" fill="none" stroke="var(--map-coast)" stroke-width="0.5"/>
+            <polygon points="0,-24 4,-7 -4,-7" fill="var(--map-coast)"/>
+            <polygon points="0,24 4,7 -4,7" fill="var(--map-grid)" opacity="0.4"/>
+            <polygon points="24,0 7,4 7,-4" fill="var(--map-grid)" opacity="0.4"/>
+            <polygon points="-24,0 -7,4 -7,-4" fill="var(--map-grid)" opacity="0.4"/>
+            <text x="0" y="-28" text-anchor="middle" fill="var(--map-coast)" font-size="10" font-weight="600">N</text>
+        </g>
+
+        <!-- 城市 -->
         {% for city in cities %}
-        {% set x = [220, 300, 360, 400, 435, 460, 485, 440, 510, 465, 565, 410, 350, 480, 570][loop.index0] %}
-        {% set y = [575, 540, 505, 465, 425, 395, 360, 345, 315, 250, 215, 150, 125, 130, 100][loop.index0] %}
+        {% set x = [171, 356, 432, 498, 574, 612, 618, 547, 618, 492, 558, 394, 340, 514, 623][loop.index0] %}
+        {% set y = [556, 546, 512, 462, 403, 382, 344, 332, 304, 198, 152, 52, 33, 33, 64][loop.index0] %}
         <g class="city-marker" data-city="{{ city.slug }}">
-            <!-- 光晕 -->
-            <circle cx="{{ x }}" cy="{{ y }}" r="14"
-                    fill="var(--map-dot-glow)" class="city-glow"/>
-            <circle cx="{{ x }}" cy="{{ y }}" r="7"
-                    fill="var(--map-dot)" stroke="var(--map-dot-stroke)" stroke-width="2"
+            <circle cx="{{ x }}" cy="{{ y }}" r="12" fill="var(--map-dot-glow)" class="city-glow"/>
+            <circle cx="{{ x }}" cy="{{ y }}" r="6"
+                    fill="var(--map-dot)" stroke="var(--map-dot-stroke)" stroke-width="1.5"
                     class="city-dot"/>
-            <text x="{{ x }}" y="{{ y - 18 }}" text-anchor="middle"
-                  fill="var(--map-text)" font-size="13" font-weight="500"
+            <text x="{{ x }}" y="{{ y - 16 }}" text-anchor="middle"
+                  fill="var(--map-text)" font-size="12" font-weight="500"
                   class="city-label">{{ city.name }}</text>
             <a href="{{ prefix }}/cities/{{ city.slug }}/">
-                <rect x="{{ x - 50 }}" y="{{ y - 45 }}" width="100" height="70"
+                <rect x="{{ x - 50 }}" y="{{ y - 45 }}" width="100" height="65"
                       fill="transparent" class="city-hitarea"/>
             </a>
         </g>
         {% endfor %}
-
     </svg>
 </section>
 
